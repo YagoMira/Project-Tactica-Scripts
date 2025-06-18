@@ -1,0 +1,121 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4980533734328396264
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4980533734328396268}
+  - component: {fileID: 4980533734328396269}
+  - component: {fileID: 4980533734328396270}
+  - component: {fileID: 4980533734328396271}
+  - component: {fileID: 7417270851022457514}
+  m_Layer: 0
+  m_Name: SQUADRON_
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4980533734328396268
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4980533734328396264}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4980533734328396269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4980533734328396264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6958e1a2067a50549ab0a3644ea42394, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentName: 
+  goals: []
+  actions: []
+  currentAction: {fileID: 0}
+  currentGoal: 
+  receivedActions: []
+  agent: {fileID: 0}
+  addNavMesh: 0
+  onIdle: 0
+  useRdmPatrolling: 0
+  rdmDistance: 100
+  agent_states: {fileID: 4980533734328396270}
+  hasAnimations: 0
+  onSiteIdle: {fileID: 0}
+  onWalkingIdle: {fileID: 0}
+  transitionTime: 0.2
+  num_squad: -1
+  squadron_controller: {fileID: 0}
+  enemyFound: 0
+  SPACE_ON_INSPECTOR: 
+--- !u!114 &4980533734328396270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4980533734328396264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b53bcc52a5edc34f881df3b33ac8009, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  worldElements: []
+  positions: []
+  inventory_list: []
+  status_list: []
+--- !u!114 &4980533734328396271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4980533734328396264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 102abf37af72be843a09973c1313d3cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionName: Action1fcw2om
+  running: 0
+  finished: 0
+  actionAnimation: {fileID: 0}
+  duration: 0
+  hasTarget: 1
+  target: {fileID: 0}
+  stopDistance: 5
+  inRange: 0
+  preconditions_list: []
+  effects_list: []
+  totalPriority: 0
+  totalCost: 0
+--- !u!114 &7417270851022457514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4980533734328396264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 693e6fcf70af7ab4585b90cf6c7411ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
