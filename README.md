@@ -32,45 +32,46 @@ One way or another, you’ve ended up in the intranet—a completely unknown wor
 
 
 # SYSTEMS - MECHANICS & CORE GAMEPLAY
-## 1.- Sistema Core
-+ Selección individual de unidades
-+ Selección grupal de unidades (Click y desplazar)
-+ UI de selección de unidades
-+ Movimiento de Cámara
-+ Rotación de cámara sobre punto de escenario (Cálculo de punto sobre el que rotar)
-+ Zoom de cámara
-+ Reposición camera en alturas (Recolocación de altura baja > alta | alta > baja) para mantener siempre los límite de distancia al terreno
-+ Límites en selección de unidades: comprobaciones fuera de terreno, terrenos altos/bajos, territorios no navegables por NavMeshAgents, etc
-+ Niveles de altura de cámara: Nivel 3 (Se muestran sprites de los escuadrones), Nivel 2 (Se muestran modelos 3D de unidades)
+## 1.- Core System
++ Individual unit selection  
++ Group unit selection (Click and drag)  
++ Unit selection UI  
++ Camera movement  
++ Camera rotation around scene point (Calculates the pivot point)  
++ Camera zoom  
++ Camera repositioning at different heights (adjusts from low > high | high > low) to always maintain terrain distance limits  
++ Unit selection limits: checks for out-of-bounds terrain, high/low terrain, non-navigable areas by NavMeshAgents, etc.  
++ Camera height levels: Level 3 (Displays squad sprites), Level 2 (Displays 3D models of units)  
   
-## 2.- Sistema de Combate
-+ Movimiento de unidades individuales a punto (Acción "Mover")
-+ Ataque de unidades individuales a enemigo (Acción "Atacar")
-+ UI de Acciones
-+ Colisiones de balas
-+ Unidades reacionan si son atacadas
-+ Nivel 3 de cámara: Tropas aliadas seleccionadas seleccionan el enemigo más cercano en caso de realizar (Acción "Atacar") sobre un escuadrón enemigo
-+ Nivel 2 de cámara: Tropas aliadas seleccionadas seleccionan el enemigo más cercano (NO SELECCIONADO PREVIAMENTE POR UNA UNIDAD ALIADA DEL MISMO ESCUADRÓN) en caso de realizar (Acción "Atacar") sobre un escuadrón enemigo
-+ IA de los enemigos integrada mediante herramienta A.D.A.P.T. AI  (https://github.com/YagoMira/A.D.A.P.T.-AI-Tool o https://assetstore.unity.com/packages/tools/behavior-ai/a-d-a-p-t-ai-241029)
-+ IA Patrullaje de enemigos
-+ IA Ataque de enemigos
+## 2.- Combat System
++ Move individual units to a point ("Move" action)  
++ Attack enemies with individual units ("Attack" action)  
++ Action UI  
++ Bullet collisions  
++ Units react when being attacked  
++ Camera Level 3: selected allied troops target the closest enemy when executing ("Attack") on an enemy squad  
++ Camera Level 2: selected allied troops target the nearest enemy (NOT PREVIOUSLY TARGETED by another ally in the same squad) when executing ("Attack") on an enemy squad  
++ Enemy AI integrated using A.D.A.P.T. AI tool (https://github.com/YagoMira/A.D.A.P.T.-AI-Tool o https://assetstore.unity.com/packages/tools/behavior-ai/a-d-a-p-t-ai-241029) <br/> *This tool had some modifications on the game development*
++ Enemy patrol AI  
++ Enemy attack AI 
   
-## 3.- Sistema de Stats (Dependiendo de Unidad)
-+ Creación de Stats para diferentes unidades
-+ Aplicación de stats sobre unidades (diferenciación dependiendo de tipo de unidad y cálculos de vida, daño, velocidad, ...)
-+ Posibilidad de aplicar efectos mediante Tacticas
+
+## 3.- Stats System (Per Unit Type)
++ Stats creation for different units  
++ Apply stats to units (based on unit type: health, damage, speed...)  
++ Ability to apply effects via Tacticas
   
-## 4.- Sistema de Recursos
-+ Creación de recurso "Créditos"
-+ Aumento / Disminución de créditos según función (Reclutamiento, cura, conquista de factorías, ...)
+## 4.- Resource System
++ Creation of resource type "Credits"  
++ Credit increase/decrease depending on function (Recruitment, healing, factory conquest, ...)  
   
-## 5.- Sistema de Escuadrones
-+ Creación de escuadrones
-+ Eliminación de escuadrones
-+ Reordenamiento de escuadrones
-+ UI según capitán de escuadrón: Permite añadir sprite de escuadrón al momento de creación del escuadrón (así como su formación pertinente)
-+ En caso de ataque a un aliado del escuadrón, el escuadrón reacciona y selecciona al atacante como enemigo
-+ Formación de escuadrones (**EXPLICACIÓN DETALLADA:**)
+## 5.- Squad System
++ Create squads  
++ Remove squads  
++ Reorder squads  
++ Squad captain UI: allows assigning squad sprite during squad creation (as well as its formation)  
++ If an ally in the squad is attacked, the squad reacts and targets the attacker as an enemy  
++ Squad formations (**DETAILED EXPLANATION**):
   - Formación de 5 Unidades (Flecha)
     ![me](https://github.com/YagoMira/Project-Tactica-Scripts/blob/main/Gifs_Videos/Squad_5.gif)
   - Formación de 4 Unidades (Rombo)
@@ -80,84 +81,84 @@ One way or another, you’ve ended up in the intranet—a completely unknown wor
   - Formación de 2 Unidades (Línea)
     ![me](https://github.com/YagoMira/Project-Tactica-Scripts/blob/main/Gifs_Videos/Squad_2.gif)
     
-  *Las unidades individuales no necesitan formación (se les asigna un elemento "null")
+  *Individual units don’t require a formation (assigned a “null” element)*
   
-  *Estas formaciones son usadas por los soldados cuando se mueven en escuadrones, se necesita seleccionar un escuadrón entero para movilizarlo de esta manera.
+  *These formations are used by soldiers when moving as squads; you must select the entire squad to move them this way.*
   
-  *En caso de que el capitán actual de un escuadrón muera, se le reasigna al nuevo capitán la formación, es decir: Si son 5 unidades con una formación "Flecha" y el capitán muere -> nueva formación = 4 unidades "Rombo"
+  *If the current captain of a squad dies, the formation is reassigned to the new captain: e.g., 5-unit “Arrow” becomes 4-unit “Diamond”.*
   
-  **Las formaciones se reajustan en caso de colisionar con un elemento externo, moviendo los colliders de las formaciones para formar una línea recta con el capitán**
+  **Formations adjust if they collide with external elements, aligning colliders into a straight line with the captain.**  
 
-## 6.- Sistema de Generales/Capitanes  *(On Development)*
-+ Actualmente el capitán de un escuadrón se escoge según: el primero elemento del array perteneciente a ese escuadrón
-+ Reordenación de escuadrones: en caso de que un capitán muera, se asigna un nuevo escuadrón (así como la UI y formaciones correspondientes)
+## 6.- Generals/Captains System *(In Development)*
++ Currently, the squad captain is selected as the first element of the squad’s array  
++ On squad reordering: if a captain dies, a new one is assigned (along with corresponding UI and formation)
   
-## 7.- Sistema Veteranía *(On Development)*
+## 7.- Veteran System *(In Development)*
 
-## 8.- Sistema de Almah’s *(On Development)*
-+ En este momento los Almah's actuan como unidades similares a los soldados pero con características de: vida, daño, velocidad, ... Diferenciadoras.
-+ Añadidas condiciones para el sistema "Liberate"
+## 8.- Almah’s System *(In Development)*
++ Currently, Almahs act similarly to soldiers but with distinct traits: health, damage, speed, etc.  
++ Added conditions for the “Liberate” system 
   
-## 9.- Sistema de Tactica’s
-+ UI de Tacticas
-+ Uso de Tacticas en unidades (aplicar efectos sobre unidades aliadas / sistema de habilidades)
-+ Sistema de manejo de tacticas: se permite la creación y uso mediante scripts de cualquier tipo de tactica futura
+## 9.- Tacticas System
++ Tacticas UI  
++ Use of tacticas on units (apply effects to allies / ability system)  
++ Tactica handling system: allows the creation and use of any type of future tacticas via scripts  
   
-## 10.- Sistema de Tiempo (Desplazamiento en tiempo y cálculo de distancias) *(On Development)*
-+ Cálculo de distancias de unidades
-+ UI de tiempo estimado de llegada a punto *(Oculto en gameplay)*
-+ Sistema de control de tiempo: velocidad, pausa, reanudar
-+ UI Sistema de control de tiempo
+## 10.- Time System (Time Movement & Distance Calculation) *(In Development)*
++ Unit distance calculation  
++ UI showing estimated arrival time *(Hidden in gameplay)*  
++ Time control system: speed, pause, resume  
++ Time control UI 
   
-## 11.- Sistema de Gestión de Bases *(On Development)*
-+ Bases médicas: Curación
-+ UI de Bases médicas
-+ Bases militares: Reclutamiento
-+ UI de Bases militares
-+ Conquista de bases enemigas
-+ Conquista de bases aliadas
-+ Efectos de conquista: curación, añadido de créditos
-+ Factorías (Edificio que permite el aumento de créditos)
-+ Interfaz de edificios genéricos: factorías, bases médicas, ...
+## 11.- Base Management System *(In Development)*
++ Medical bases: Healing  
++ Medical base UI  
++ Military bases: Recruitment  
++ Military base UI  
++ Enemy base conquest  
++ Allied base conquest  
++ Conquest effects: healing, credit bonus  
++ Factories (Buildings that increase credits)  
++ Generic building UI: factories, medical bases, etc.  
   
-## 12.- Sistema Diálogo
-+ Diálogo estilo Novela Visual
-+ Animaciones de personajes
-+ Integración de nombres de personajes y texto correspondiente
-+ Integración de nombre del jugador *(tomado a través de UI de inicio del juego)*
-+ Cambios de escena / Gestión de cinemáticas
-+ Integración de vídeos/cinemáticas en diálogos en curso
-+ Diálogos gestionados a traves del parseo de documentos csv para fácil integración de nuevos idiomas
-+ Control de diálogos: velocidad y lectura de caracteres
+## 12.- Dialogue System
++ Visual Novel-style dialogue  
++ Character animations  
++ Character names and dialogue integration  
++ Player name integration *(taken from game start UI)*  
++ Scene transitions / Cinematic management  
++ Integration of videos/cinematics into ongoing dialogues  
++ Dialogues handled via CSV parsing for easy multilingual support  
++ Dialogue control: speed and character-by-character reading  
  
-## 13.- Sistema Social *(On Development)*
-+ Conteo de generales/almah's eliminados *(aumenta la frecuencia de respiración en cinemáticas finales - solo por código)*
+## 13.- Social System *(In Development)*
++ Count of generals/Almahs defeated *(increases breathing frequency in final cinematics - code only)*  
   
-## 14.- Sistema Liberate
-+ Gestión de cinemáticas
-+ Cambio de escena bajo condiciones de victoria en enemigo
+## 14.- Liberate System
++ Cinematic handling  
++ Scene transition triggered by enemy defeat conditions
 
-## 15.- Sistema Primera Persona
- - Controlador en primera persona
- - Interacción con objetos en primera persona
- - Gestión de eventos en primera persona
+## 15.- First-Person System
+ - First-person controller  
+ - First-person object interaction  
+ - First-person event handling 
  
  <br/><br/>
-## Es posible que algunas mecánicas no estén detalladas/descritas debido a la longitud de las mismas, pero existen otros elementos en el juego como:
- - Condiciones de victoria / derrota
- - Sistema de Opciones (Cerrar juego)
- - UI de Opciones
- - Manejo de opciones: sonido, idiomas, ...
- - **Integración de múltiples idiomas (ENG & ESP)**
- - **Fácil integración de nuevos idiomas mediante excel: Sistema de parseo de documentos csv**
- - **Fácil integración de nuevos nombres de soldados reclutados mediante excel: Sistema de parseo de documentos csv**
- - UI Menu Principal / Inicio
- - Botones, animaciones e interacciones con botones de menu principal
- - *También se han creado diversos sonidos de soldados como: "Roger That, Moving On, Coming, Received Commander"*
- - Etc.
+## There may be mechanics not described in detail due to their complexity, but the game also includes:
+ - Victory / defeat conditions  
+ - Options system (Exit game)  
+ - Options UI  
+ - Options handling: sound, language, etc.  
+ - **Multilingual integration (ENG & ESP)**  
+ - **Easy integration of new languages via CSV parsing**  
+ - **Easy integration of recruitable soldier names via CSV parsing**  
+ - Main Menu / Start UI  
+ - Buttons, animations, and interactions in the main menu  
+ - *Several voice lines have also been created for soldiers, such as: "Roger That, Moving On, Coming, Received Commander"*  
+ - Etc.  
 
 
-*ATTENTION: This are annotations of some of the systems of the game, to understand the fully implementation please view the gameplay video or check the code on the scripts for see hidden functionalities. This is because some systems are implemented but not used, some explanations here are not fully extensive or detailed (some mechanics maybe are missing). Thanks for the consideration*
+*ATTENTION: These are annotations of some of the game systems. To fully understand their implementation, please view the gameplay video or check the code in the scripts to see hidden functionalities. Some systems are implemented but not used; explanations here are not fully comprehensive or detailed (some mechanics may be missing). Thanks for your understanding.*
 
 
 <br/>
