@@ -20,6 +20,7 @@ https://www.youtube.com/watch?v=XOIb2vmdpOg&t=8s
 One way or another, you’ve ended up in the intranet—a completely unknown world that, by a twist of fate, is in desperate need of your help. From now on… YOU will take on the responsibility of leading an army to free this new world from the evil that threatens it and, in doing so, find your way back to what you’ve always considered your “home.”
 
 ## TUTORIAL
+![me](https://github.com/YagoMira/Project-Tactica-Scripts/blob/main/Gifs_Videos/AlmahXTacticaTutorial-ezgif.com-resize.gif)
 
 # SYSTEMS - MECHANICS & CORE GAMEPLAY
 ## 1.- Sistema Core
@@ -54,6 +55,22 @@ One way or another, you’ve ended up in the intranet—a completely unknown wor
 + UI según capitán de escuadrón: Permite añadir sprite de escuadrón al momento de creación del escuadrón (así como su formación pertinente)
 + En caso de ataque a un aliado del escuadrón, el escuadrón reacciona y selecciona al atacante como enemigo
 + Formación de escuadrones (**EXPLICACIÓN DETALLADA:**)
+  - Formación de 5 Unidades (Flecha)
+    ![me](https://github.com/YagoMira/Project-Tactica-Scripts/blob/main/Gifs_Videos/Squad_5.gif)
+  - Formación de 4 Unidades (Rombo)
+    ![me](https://github.com/YagoMira/Project-Tactica-Scripts/blob/main/Gifs_Videos/Squad_4.gif)
+  - Formación de 3 Unidades (Flecha Pequeña)
+    ![me](https://github.com/YagoMira/Project-Tactica-Scripts/blob/main/Gifs_Videos/Squad_3.gif)
+  - Formación de 2 Unidades (Línea)
+    ![me](https://github.com/YagoMira/Project-Tactica-Scripts/blob/main/Gifs_Videos/Squad_2.gif)
+    
+  *Las unidades individuales no necesitan formación (se les asigna un elemento "null")
+  
+  *Estas formaciones son usadas por los soldados cuando se mueven en escuadrones, se necesita seleccionar un escuadrón entero para movilizarlo de esta manera.
+  
+  *En caso de que el capitán actual de un escuadrón muera, se le reasigna al nuevo capitán la formación, es decir: Si son 5 unidades con una formación "Flecha" y el capitán muere -> nueva formación = 4 unidades "Rombo"
+  
+  **Las formaciones se reajustan en caso de colisionar con un elemento externo, moviendo los colliders de las formaciones para formar una línea recta con el capitán**
 
 ## 6.- Sistema de Generales/Capitanes  *(On Development)*
 + Actualmente el capitán de un escuadrón se escoge según: el primero elemento del array perteneciente a ese escuadrón
